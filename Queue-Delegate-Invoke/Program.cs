@@ -8,17 +8,17 @@ namespace Queue_Delegate_Invoke
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var people = new People()
             {
                 Id = 1,
                 FirstName = "Nijat",
                 LastName = "",
-                Age = 25
+                Age = 15
             };
 
-            var validationIssue = new BusinessRules().Run(CheckIfNameIsValid(people.FirstName, Messages.FirstNameMustNotBeEmpty),
+            var validationIssue = await new BusinessRules().Run(CheckIfNameIsValid(people.FirstName, Messages.FirstNameMustNotBeEmpty),
                                                           CheckIfNameIsValid(people.LastName, Messages.LastNameMustNotBeEmpty),
                                                           CheckIfAgeIsLargerThanOrEqualsTo18(people.Age));
 
